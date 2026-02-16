@@ -5,6 +5,7 @@ import { useRouter } from "next/navigation";
 import { useTasks } from "@/hooks/useTasks";
 import TaskForm from "@/components/TaskForm";
 import TaskList from "@/components/TaskList";
+import FloatingChat from "@/components/FloatingChat";
 
 export default function DashboardPage() {
   const router = useRouter();
@@ -161,6 +162,9 @@ export default function DashboardPage() {
           />
         </div>
       </main>
+
+      {/* Floating AI Chat Widget */}
+      <FloatingChat />
     </div>
   );
 }

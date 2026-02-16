@@ -36,9 +36,9 @@ async def lifespan(app: FastAPI):
 
 # Create FastAPI application
 app = FastAPI(
-    title="Todo-AI Phase II API",
-    description="RESTful API for multi-user task management with JWT authentication",
-    version="2.0.0",
+    title="Todo-AI Phase III API",
+    description="RESTful API for multi-user task management with AI chatbot",
+    version="3.0.0",
     lifespan=lifespan,
 )
 
@@ -80,8 +80,8 @@ async def log_requests(request: Request, call_next):
 async def root():
     """Root endpoint - API health check."""
     return {
-        "message": "Todo-AI Phase II API",
-        "version": "2.0.0",
+        "message": "Todo-AI Phase III API",
+        "version": "3.0.0",
         "status": "operational"
     }
 
@@ -93,7 +93,8 @@ async def health_check():
 
 
 # Register routers
-from .api import auth, tasks
+from .api import auth, tasks, chat
 
 app.include_router(auth.router, prefix="/auth", tags=["Authentication"])
 app.include_router(tasks.router, prefix="/tasks", tags=["Tasks"])
+app.include_router(chat.router, prefix="/api", tags=["Chat"])
