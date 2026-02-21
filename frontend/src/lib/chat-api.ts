@@ -30,7 +30,7 @@ export const chatApi = {
       throw new Error("Not authenticated");
     }
 
-    const response = await fetch(`${API_URL}/api/chat`, {
+    const response = await fetch(`${API_URL}/api/chat/`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
