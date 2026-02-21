@@ -44,12 +44,9 @@ async def get_or_create_conversation(
         result = await session.execute(query)
         conversation = result.scalar_one_or_none()
 
-        if not conversation:
-            raise HTTPException(
-                status_code=404,
-                detail="Conversation not found or access denied"
-            )
-        return conversation
+        if conversation:
+            return conversation
+        # If conversation not found (e.g., database reset), create new one
 
     # Create new conversation
     conversation = Conversation(user_id=user_id)
